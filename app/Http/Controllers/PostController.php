@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\Post\PostStoreRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
@@ -35,8 +35,9 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PostStoreRequest $request): Post
+    public function store(Request $request): Post
     {
+        dd($request);
         $data = $request->validated();
 
         $image     = $data['poster'];
@@ -56,6 +57,7 @@ class PostController extends Controller
         $post->save();
 
         if ($data['category_ids']) {
+            dd($data['category_ids']);
             $post->categories()->attach($data['category_ids']);
         }
 
