@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index(): Collection
     {
-        return Post::all();
+        return Post::with('categories')->get();
     }
 
     /**
@@ -35,9 +35,8 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): Post
+    public function store(PostStoreRequest $request): Post
     {
-        dd($request);
         $data = $request->validated();
 
         $image     = $data['poster'];
@@ -57,9 +56,10 @@ class PostController extends Controller
         $post->save();
 
         if ($data['category_ids']) {
-            dd($data['category_ids']);
             $post->categories()->attach($data['category_ids']);
         }
+
+        $post->load('categories');
 
         return $post;
     }
