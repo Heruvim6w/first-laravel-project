@@ -55,7 +55,7 @@ class PostController extends Controller
 
         $post->save();
 
-        if ($data['category_ids']) {
+        if (array_key_exists('category_ids', $data)) {
             $post->categories()->attach($data['category_ids']);
         }
 
