@@ -60,6 +60,17 @@
                                                 <span>{{ $comment->created_at->translatedFormat('j F Y') }}</span>
                                             @endif
                                             <p>{{ $comment->content }}</p>
+                                            <span>
+                                                <form
+                                                    action="{{ route('comments.destroy', $comment->id) }}"
+                                                    method="post"
+                                                    onsubmit="return confirm('Вы уверены?');"
+                                                >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"><i class="fa fa-trash"></i> Удалить</button>
+                                                </form>
+                                            </span>
                                         </div>
                                     </div>
                                 @endforeach
