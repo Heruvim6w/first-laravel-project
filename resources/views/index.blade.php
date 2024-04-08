@@ -24,12 +24,12 @@
                 @foreach($posts as $post)
                     <div class="blog-post-thumb">
                         <div class="blog-post-image">
-                            <a href="{{ route('posts.show', $post->id) }}">
+                            <a href="{{ route('posts.show', $post->slug) }}">
                                 <img src="{{ asset('storage/posts/posters/' . $post->poster) }}" class="img-responsive" alt="Blog Image">
                             </a>
                         </div>
                         <div class="blog-post-title">
-                            <h3><a href="{{ route('posts.show', $post->id) }}">{{ $post->name }}</a></h3>
+                            <h3><a href="{{ route('posts.show', $post->slug) }}">{{ $post->name }}</a></h3>
                         </div>
                         <div class="blog-post-format">
                             <span><a href="#"><img src="{{ asset('assets/images/author-image1.jpg') }}" class="img-responsive img-circle"> Jen Lopez</a></span>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="blog-post-des">
                             <p>{{ $post->description }}</p>
-                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-default">Читать делее...</a>
+                            <a href="{{ route('posts.show', $post->slug) }}" class="btn btn-default">Читать делее...</a>
                         </div>
                     </div>
                 @endforeach
