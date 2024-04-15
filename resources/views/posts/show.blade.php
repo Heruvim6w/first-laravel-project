@@ -27,10 +27,10 @@
                         </div>
 
                         <div class="blog-post-des">
-                            {{ $post->description }}
+                            {!! $post->description !!}
                         </div>
 
-                        {{ $post->content }}
+                        {!! $post->content !!}
 
                         <div class="blog-author">
                             <div class="media">
@@ -59,7 +59,7 @@
                                             @else
                                                 <span>{{ $comment->created_at->translatedFormat('j F Y') }}</span>
                                             @endif
-                                            <p>{{ $comment->content }}</p>
+                                                {!! $comment->content !!}
                                             <form
                                                 action="{{ route('comments.destroy', $comment->id) }}"
                                                 method="post"
@@ -76,17 +76,21 @@
                         @endif
 
                         <div class="blog-comment-form">
-                            <h3>Оставить комментарий</h3>
-                            <form action="{{ route('comments.store') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                <input type="text" class="form-control" placeholder="Name" name="name" required>
-                                <input type="email" class="form-control" placeholder="Email" name="email" required>
-                                <textarea name="message" rows="5" class="form-control" id="message" placeholder="Message" message="message" required="required"></textarea>
-                                <div class="col-md-3 col-sm-4">
-                                    <input name="submit" type="submit" class="form-control" id="submit" value="Post Your Comment">
-                                </div>
-                            </form>
+{{--                            @auth--}}
+                                <h3>Оставить комментарий</h3>
+                                <form action="{{ route('comments.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <input type="text" class="form-control" placeholder="Name" name="name" required>
+                                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                                    <textarea name="message" rows="5" class="form-control tinyMce" id="message" placeholder="Message"></textarea>
+                                    <div class="col-md-3 col-sm-4">
+                                        <input name="submit" type="submit" class="form-control" id="submit" value="Post Your Comment">
+                                    </div>
+                                </form>
+{{--                            @else--}}
+{{--                                <h3>Войдите, чтобы оставить комментарий</h3>--}}
+{{--                            @endauth--}}
                         </div>
                     </div>
                 </div>
@@ -96,7 +100,7 @@
 
     <style>
         .main-single-post {
-            background: url({{ asset('storage/posts/posters/' . $post->poster) }}) no-repeat;
+            background: url({{ asset('storage/' . $post->poster) }}) no-repeat;
         }
     </style>
 @endsection

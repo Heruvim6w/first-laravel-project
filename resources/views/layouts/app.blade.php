@@ -17,6 +17,8 @@
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
+
+    @vite(['resources/js/app.js'])
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -28,7 +30,7 @@
                 <span class="icon icon-bar"></span>
                 <span class="icon icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">Neuron</a>
+            <a href="{{ route('home_page') }}" class="navbar-brand">Neuron</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
