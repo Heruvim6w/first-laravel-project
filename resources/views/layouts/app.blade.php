@@ -78,7 +78,7 @@
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.</p>
                 <div class="footer-copyright">
-                    <p>Copyright &copy; 2017 Your Company - Design: Tooplate</p>
+                    <p>Copyright &copy; {{ now()->year }} Your Company - Design: Tooplate</p>
                 </div>
             </div>
 
